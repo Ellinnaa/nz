@@ -79,7 +79,7 @@ const STOPS= [
     nr: 9,
     title: "Wellington",
     user: "cs4151",
-    lat: "-41.2875",
+    lat: -41.2875,
     lng: 174.776111,
     zoom: 12,
 },
@@ -165,7 +165,7 @@ const STOPS= [
 },
 {
     nr: 24,
-    titel: "Moeraki Boulders",
+    title: "Moeraki Boulders",
     user: "StephanPumpernik",
     lat: -45.345275,
     lng: 170.826061,
@@ -198,22 +198,35 @@ title: "Mount Cook",
 
 
     ];
+console.log(STOPS[0]);
+console.log(STOPS[0].title);
+
+
+
 
 //Karte initialisieren
 let map = L.map('map').setView([stop.lat, stop.lng], stop.zoom);
+
 //Hintergrundkarte initialisieren
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
+// loop über Etappen
+for (let i=0; i<STOPS.length; i++) {
+    
 //Marker zeichnen
-let marker = L.marker([stop.lat, stop.lng]).addTo(map);
-//Popup definieren und öffnen
+    let marker = L.marker([STOPS[i].lat, STOPS[i].lng]).addTo(map);
+
+    //Popup definieren und öffnen
 marker.bindPopup(`
-            <h2>${stop.title}</h2>
-            <ul>
-            <li>Geografische Breite ${stop.lat. toFixed(5)}° </li>
-            <li>Geografische Länge ${stop.lng. toFixed(5)}° </li>
-            </ul>
-            `).openPopup();
+    <h2>${STOPS[i].title}</h2>
+    <ul>
+    <li>Geografische Breite ${STOPS[i].lat. toFixed(5)}° </li>
+    <li>Geografische Länge ${STOPS[i].lng. toFixed(5)}° </li>
+    </ul>
+    `).openPopup();
+}
+
+
