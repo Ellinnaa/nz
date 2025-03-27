@@ -239,7 +239,16 @@ marker.bindPopup(`
     let option = document.createElement("option");
     option.value = STOPS[i].user;
     option.text=STOPS[i].title;
+    if(STOPS[i].user =="Ellinnaa"){
+        option.selected = true;
+    }
     document.querySelector("#pulldown select").appendChild(option);
 }
 
-
+// auf Änderungen beim Pulldown reagieren
+document.querySelector("#pulldown select").onchange = function(evt) {
+    let url= `https://${evt.target.value}.github.io/nz`;
+    //console.log(url);
+    //console.log(evt.target.value);
+    window.location = url;
+}
