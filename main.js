@@ -1,7 +1,11 @@
 /*Skript für Neuseelandreise*/
 
+let lat =-35.183333;
+let long = 174.166667;
+let zoom = 11;
+
 //Karte initialisieren
-let map = L.map('map').setView([-35.183333, 174.166667], 11);
+let map = L.map('map').setView([lat, long], zoom);
 //Hintergrundkarte initialisieren
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
